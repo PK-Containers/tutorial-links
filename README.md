@@ -13,6 +13,7 @@ https://kubernetes.io/docs/tutorials/
 http://blog.kubernetes.io/2017/05/kubernetes-security-process-explained.html
 http://kubernetesbyexample.com/
 
+    https://thenewstack.io/deploy-highly-available-wordpress-instance-statefulset-kubernetes-1-5/
 
 UX metrics
 
