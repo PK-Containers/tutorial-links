@@ -10,6 +10,9 @@ Kubernetes
 
 https://www.youtube.com/watch?v=Co3Ur-MbcYY&list=PLF3s2WICJlqOiymMaTLjwwHz-MSVbtJPQ
 https://kubernetes.io/docs/tutorials/
+http://blog.kubernetes.io/2017/05/kubernetes-security-process-explained.html
+http://kubernetesbyexample.com/
+
 
 UX metrics
 
