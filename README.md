@@ -20,7 +20,13 @@ https://library.gv.com/how-to-choose-the-right-ux-metrics-for-your-product-5f463
 When using PV, PVC ensure PV is created first and then PVC and then Pod
 
 https://github.com/kubernetes/kubernetes/issues/24241
+https://github.com/kubernetes/kubernetes/issues/28962
+https://github.com/kubernetes/kubernetes/issues/44377
+
 
 To get into node and then root (sudo su -)
+
+Stateful Sets
+https://github.com/Comcast/kube-yarn
 
 
