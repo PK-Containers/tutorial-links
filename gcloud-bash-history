@@ -1,0 +1,910 @@
+curl localhost:3003
+kubectl get nodes
+kubectl get pods
+exit
+kubectl get pod wordpress
+kubectl get pods
+help
+gcloud container clusters create k0
+gcloud config set compute/zone us-east1-b
+gcloud container clusters create pvy
+kubectl run nginx --image=nginx:1.10.0
+kubectl expose deployment nginx --port 80 --type LoadBalancer
+kubectl get services
+mkdir pods
+ls
+cd pods
+vi monolith.yaml
+cd ..
+kubectl create -f pods/monolith.yaml
+kubectl get pods
+kubectl describe pod monolith
+curl http://127.0.0.1:10080
+cd pods
+vi monolith-services.yaml
+cd ..
+kubectl create -f pods/monolith-services.yaml
+gcloud compute firewall-rules create allow-monolith-nodeport --allow=tcp:31000
+gcloud compute instances list
+curl -k https://104.196.197.66:31000
+ping 104.196.197.66
+kubectl delete deployments --all
+kubectl delete services --all
+kubectl delete pods --all
+gcloud config set compute/zone us-central1-b
+gcloud container clusters create example-cluster
+vi wordpress.json
+kubectl create -f wordpress.json
+kubectl get services
+gcloud compute firewall-rules create hello-world-node-3000 --allow tcp:3000 --target-tags k8s-hello-world-node
+kubectl get pod wordpress
+gcloud components update preview
+ps -eaf|grep kube
+ps -eaf|grep kubelet
+ps -eaf|grep etc
+kubectl get nodes
+kubectl ssh node gke-example-cluster-default-pool-c2fbcee8-km7r
+kubectl ssh
+gcloud compute ss gke-example-cluster-default-pool-c2fbcee8-km7r
+cd ~
+ls -altr
+vi .bash_history
+kubectl delete deployments --all
+ls
+cd pods
+ls
+vi monolith.yaml
+vi helloworld.yaml
+kubectl create -f helloworld.yaml
+cd ..
+kubectl get pods
+exit
+ls
+kubectl create -f pods/helloworld.yaml
+cd pods
+vi helloworld.yaml
+kubectl get nodes
+gcloud container clusters create k0
+gcloud compute zones
+gcloud compute zones list
+gcloud container clusters create k0 gcloud config set compute/zone us-west1-a
+ gcloud config set compute/zone us-west1-a
+gcloud container clusters create k0
+kubectl get nodes
+cd ..
+kubectl create -f pods/helloworld.yaml
+kubectl create -f pods/helloservice.yaml
+curl localhost:4000
+kubectl get services
+kubectl delete service helloworld
+cd pods
+vi helloservice.yaml
+cd ..
+kubectl create -f pods/helloservice.yaml
+gcloud compute firewall-rules create helloworld-3000 --allow=tcp:3000
+gcloud compute firewall-rules create helloworld-4000 --allow=tcp:4000
+curl localhost:4000
+kubectl get service helloworld
+kubectl port-forward helloworld 4000:4000
+kubectl get pods
+curl localhost:4000
+curl 127.0.0.1:4000
+kubectl port-forward hello-1560929026-15t1r 4000:4000
+ls
+cd pods
+ls
+vi helloservice.yaml
+kubectl delete service helloworld
+pwd
+cd ../
+ls
+kubectl create -f pods/helloservice.yaml
+kubectl get pods
+gcloud compute firewall-rules create helloworld-4000 --allow=tcp:4000
+kubectl get service helloworld
+curl 104.196.239.79:4000
+curl 104.196.239.79:30258
+curl 104.196.239.79:4000
+kubectl port-forward hello-1560929026-15t1r 4000:4000
+gcloud compute firewall-rules create helloworld-30258 --allow=tcp:30258
+curl 104.196.239.79:30258
+curl 127.0.0.1:4000
+gcloud compute firewall-rules create helloworld-4000 --allow=tcp:4000
+curl 127.0.0.1:4000
+kubectl get service helloworld
+exit
+kubectl port-forward hello-1560929026-15t1r 4000:4000
+clear
+kubectl egt deployments
+kubectl get deployments
+gcloud compute zones list
+gcloud config set compute/zone us-west1-a
+gcloud container clusters create pv
+kubectl get nodes
+clear
+kubectl create -f pods/helloworld.yaml
+cd pods
+vi helloworld.yaml
+vi helloservice.yaml
+cd ..
+kubectl create -f pods/helloservice.yaml
+cd pods/
+vi helloservice.yaml
+curl localhost:4000
+kubectl port-forward hello-1560929026-15t1r 4000:4000
+kubectl get pods
+curl localhost:4000
+curl 127.0.0.1:4000
+kubectl port-forward hello-1560929026-h3jz4 4000:4000
+kubectl delete service helloworld
+vi helloservice.yaml
+cd ..
+kubectl create -f pods/helloservice.yaml
+kubectl get pods
+gcloud compute firewall-rules create helloworld-1 --allow=tcp:31000
+gcloud compute instances list
+curl http://35.185.228.144:31000
+kubectl describe services helloworld
+kubectl describe services
+clear
+kubectl get services
+kubectl describe services helloworld|grep Endpoints
+kubectl get pods
+kubectl describe pods hello-1560929026-h3jz4
+kubectl get pods -l "app=hello"
+kubectl get services
+kubectl describe services helloworld|grep Endpoints
+kubectl get nodes
+gcloud compute instances list
+curl 10.138.0.2:31000
+cd pods
+vi helloservice.yaml
+exit
+exit
+kubectl get pods -l "app=hello"
+kubectl delete service helloworld
+cd pods/
+vi helloservice.yaml
+cd pods/cd ..
+cd ..
+kubectl create -f pods/helloservice.yaml
+kubectl describe services helloworld|grep Endpoints
+gcloud compute instances list
+curl 35.185.228.144:31000
+curl gke-pv-default-pool-f6389842-8w1x:31000
+curl 35.185.228.144:31000
+exit
+gcloud compute zones list
+gcloud config set compute/zone us-west1-a
+gcloud container clusters create pv
+kubectl get nodes
+cd pods
+ls
+vi helloworld.yaml
+cd ..
+kubectl create -f pods/helloworld.yaml
+cd pods
+vi helloservice.yaml
+cd ..
+kubectl create -f pods/helloservice.yaml
+kubectl get pods
+curl localhost:4000
+curl 127.0.0.1:4000
+curl localhost:4000/prabha
+kubectl port-forward hello-275105591-ljdst 4000:4000
+cd pods
+cd ..
+ls
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete allow-monolith-nodeport
+gcloud compute firewall-rules delete helloworld-1
+pwd
+cd pods/
+ls
+vi helloworld.yaml
+gcloud compute firewall-rules list
+vi helloservice.yaml
+kubectl deployments delete hello
+kubectl deployments delete --all
+kubectl deployment delete --all
+kubectl delete deployments --all
+kubectl delete service helloworld
+cd ..
+kubectl create -f pods/helloworld.yaml
+kubectl create -f pods/helloservice.yaml
+gcloud compute firewall-rules create helloworld-1 --allow=tcp:31000
+kubectl get services
+kubectl describe services helloworld|grep Endpoints
+gcloud compute instances lis
+gcloud compute instances lists
+gcloud compute instances list
+curl 35.185.249.32:31000
+curl 35.185.249.32:4000
+kubectl delete service helloworld
+cd pods
+vi helloservice.yaml
+vi helloworld.yaml
+cd ..
+kubectl create -f pods/helloservice.yaml
+kubectl describe services helloworld|grep Endpoints
+curl 35.185.249.32:31000
+curl 35.185.249.32:31000
+curl 35.185.249.32:4000
+kubectl delete service helloworld
+cd pods
+vi helloservice.yaml
+vi helloworld.yaml
+cd ..
+kubectl create -f pods/helloservice.yaml
+kubectl describe services helloworld|grep Endpoints
+curl 35.185.249.32:31000
+curl 10.138.0.3:31000
+kubectl describe services helloworld|grep Endpoints
+curl 10.0.2.4:4000
+kubectl get nodes
+gcloud compute firewall-rules lists
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete helloworld-1
+curl 35.185.249.32:31000
+cd pods
+vi helloservice.yaml
+vi helloworld.yaml
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete pvy
+gcloud compute firewall-rules delete hello-world-node-3000
+gcloud compute firewall-rules delete hello-world-node-3003
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete k8s-fw-ad62e81a7432c11e79b1f42010a8a00b
+gcloud compute firewall-rules delete helloworld-3000
+gcloud compute firewall-rules delete helloworld-30258
+gcloud compute firewall-rules delete helloworld-4000
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete k8s-fw-aa234fa463ee311e7a07f42010a8e007
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete k8s-fw-aeb81040e411711e7b7bd42010af0026
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete k8s-fw-a8d4dcf9e411c11e7b7bd42010af0026
+gcloud compute firewall-rules list
+gcloud compute firewall-rules create helloworld-1 --allow=tcp:31000
+gcloud compute firewall-rules list
+curl 35.185.249.32:31000
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete hellowworld-1
+gcloud compute firewall-rules delete helloworld-1
+curl 35.185.249.32:31000
+gcloud compute firewall-rules create helloworld-1 --allow=tcp:31000
+curl 35.185.249.32:31000
+gcloud compute firewall-rules delete helloworld-1
+vi helloservice.yaml
+curl 35.185.249.32:31000
+vi helloservice.yaml
+cd ..
+kubectl create -f pods/helloservice.yaml
+kubectl delete service helloworld
+kubectl create -f pods/helloservice.yaml
+gcloud comput instances list
+gcloud compute instances list
+kubectl get services
+curl 35.185.249.32:30960
+curl 35.185.254.165:30960
+curl 35.185.254.165:4000
+curl 35.185.249.32:30960
+kubectl get nodes
+kubectl get services
+curl 35.185.249.32:30960
+gcloud compute firewall-rules create helloworld-1 --allow=tcp:30960
+curl 35.185.254.165:30960
+curl 35.185.249.32:30960
+curl 35.185.254.165:4000
+curl 35.185.249.32:30960
+curl 35.185.254.165:30960
+gcloud compute firewall-rules delete helloworld-1
+cd pods
+ls
+kubectl get pods
+vi helloworld.yaml
+kubectl create -f helloworld.yaml
+kubectl update -f helloworld.yaml
+kubectl get pods
+kubectl get nodes
+kubectl describe deployments hello
+kubectl get replicasets
+kubectl get pods
+kubectl get services
+curl 35.185.254.165:4000
+curl http://35.185.254.165:4000
+curl -k http://35.185.254.165:4000/
+ls
+vi helloservice.yaml
+vi helloworld.yaml
+kubectl apply -f helloworld.yaml
+kubectl describe deployments hello
+kubectl get pods
+mkdir tls
+cd tls
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/hello.key -out /etc/ssl/certs/hello.crt
+lsw
+ls
+cd /etc/ssl/private/
+sudo cd /etc/ssl/private/
+cat /etc/ssl/private/hello.key
+sudo cat /etc/ssl/private/hello.key
+openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+ls
+cd ..
+kubectl create secret generic tls-certs --from-file=tls/
+kubectl describe secrets tls-certs
+ls
+cd pods
+vi helloservice.yaml
+kubectl apply -f helloservice.yaml
+kubectl get services
+kubectl describe service hellowrld
+kubectl describe service helloworld
+cd ../tls
+ls
+vi hello.conf
+pwd
+vi hello.conf
+clear
+ls
+kubectl create configmap helloconf --from-file=hello.comf
+kubectl create configmap helloconf --from-file=hello.conf
+kubectl get cs
+ssh
+gcloud container clusters list
+clear
+kubectl run my-web --image=nginx --port=80
+kubectl expose deployment my-web --target-port=80 --type=NodePort
+kubectl get svc
+gcloud compute firewall-rules create my-web --allow=tcp:30124
+gcloud compute instances list
+curl 35.185.249.32:30124
+kubectl dashboard
+curl localhost:30124
+curl 10.138.0.3:80
+kubectl get nodes
+kubectl cluster-info
+kubectl get cs
+kubectl exec -it web /bin/bash
+cd services/
+ls
+vi web.yaml
+cd ..
+kubectl create -f services/web.yaml
+cd services/
+vi web.yaml
+cd ..
+kubectl create -f services/web.yaml
+cd services/
+vi web.yaml
+cd ..
+kubectl create -f services/web.yaml
+kubectl get svc
+kubectl get nodes
+curl gke-pv-default-pool-b9b0e936-t89q:30763
+gcloud compute instances list
+curl 104.198.100.81:30763
+gcloud compute firewall-rules create web-1 --allow=tcp:30763
+curl 104.198.100.81:30763
+pwd
+mkdir rc
+cd rc
+vi rc.yaml
+cd ..
+kubectl create -f rc/rc.yaml
+kubectl get rc
+kubectl get pods
+kubectl delete pod web-g2zxv
+kubectl get pods
+kubectl scale rc web --replicas=10
+kubectl get pods
+kubectl delete deployment web
+exit
+gcloud config set compute/zone us-west1-a
+gcloud container clusters create pv
+kubectl get pods
+cd learnpod/
+vi mypod.yaml
+kubectl create -f mypod.yaml
+kubectl get pods
+kubectl expose pod mypod --type=NodePort
+kubectl describe pod mypod
+kubectl get svc
+gcloud compute instances list
+open http://104.198.100.81:32084
+curl http://104.198.100.81:32084
+gcloud compute firewall-rules create mypod1 --allow=tcp:32084
+cd ..
+ls
+cd tier-service/
+cd ..
+cp tier-service/ multicontainer
+cp tier-service/ multicontainer/
+ls
+cp -R tier-service/ multicontainer/
+ls
+cd multicontainer/
+ls
+exit
+ls
+cd tier-service/
+ls
+gcloud config set compute/zone us-west1-a
+gcloud container clusters create pv
+ls
+cd pods
+ls
+vi web.yaml
+cd ..
+kubectl create -f pods/web.yaml
+kubectl create -f pods/redis.yaml
+kubectl create -f services/web.yaml
+kubectl create -f services/redis.yaml
+ls
+cd services/
+vi redis.yaml
+vi web.yaml
+kubectl get svc
+gcloud compute instances list
+curl 35.185.216.186:30208
+gcloud compute firewall-rules create mypod2 --allow=tcp:30208
+clear
+mkdir svcdisc
+cd svcdisc/
+vi test1.yaml
+cp ~/tier-service/rc/rc.yaml .
+ls
+vi rc.yaml
+vi svc.yaml
+ls
+kubectl create -f test1.yaml
+kubectl create -f svc.yaml -f rc.yaml
+kubectl get pods
+kubectl describe pod red
+clear
+kubectl get svc
+kubectl describe svc red
+kubectl clusterinfo
+kubectl get nodes
+ping gke-pv-default-pool-86a236fb-9pxk
+cd /etc
+ls
+vi hosts
+clear
+cd -
+kubectl describe svc red
+gcloud compute firewall-rules create red --allow=tcp:31001
+gcloud compute firewall-rules create green --allow=tcp:31002
+gcloud compute firewall-rules create blue --allow=tcp:31003
+gcloud compute instances list
+curl 35.197.5.64:31001
+kubectl describe services red|grep Endpoints
+curl 10.138.0.2:31001
+ls
+vi svc.yaml
+cd ..
+ls
+cd tier-service/
+ls
+cd services/
+ls
+vi web.yaml
+ cd ../..
+ls
+cd svcdisc/
+ls
+vi svc.yaml
+kubectl exec red ls
+kubectl exec red /bin/bash
+kubectl exec -it red /bin/bash
+ls
+vi test1.yaml
+vi svc.yaml
+vi rc.yaml
+kubectl delete deployments --all
+kubectl delete services --all
+kubectl delete pods --all
+kubectl delete rc --all
+kubectl get services
+kubectl get pods
+kubectl get rc
+kubectl get pods
+ls
+kubectl create -f test1.yaml -f svc.yaml -f rc.yaml
+kubectl exec -it red /bin/bash
+vi test1.yaml
+kubectl describe services red|grep NodePort
+kubectl exec -it red /bin/bash
+exit
+ls
+cd learnpod
+ls
+vi mypod.yaml
+cd ..
+ls
+rm -R learnpod/
+ls
+mkdir storage
+cd storage/
+ls
+vi storage-pod.yaml
+kubectl create -f storage-pod.yaml
+vi storage-pod.yaml
+kubectl create -f storage-pod.yaml
+kubectl get pods
+kubectl describe pods nginx
+gcloud compute instances list
+ssh 10.138.0.2
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+kubectl exec -it nginx /bin/bash
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+kubectl delete -f storage/storage-pod.yaml
+kubectl get pods
+ls
+kubectl get pods
+ls
+exit
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+ls
+cd storage/
+vi storage-pod.yaml
+cp storage-pod.yaml storage-gce.yaml
+vi storage-gce.yaml
+gcloud compute disks create --size=10GB --zone=us-west1-a my-data-disk
+kubectl create -f storage-gce.yaml
+vi storage-gce.yaml
+kubectl create -f storage-gce.yaml
+vi storage-gce.yaml
+kubectl create -f storage-gce.yaml
+kubectl describe pods nginx
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+vi storage-gce.yaml
+vi storage-pod.yaml
+kubectl delete pod nginx
+kubectl create -f storage-pod.yaml
+kubectl describe pod nginx
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+kubectl exec -it nginx /bin/bash
+kubectl delete -f storage-pod.yaml
+vi storage-gce.yaml
+kubectl create -f storage-gce.yaml
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+vi nfs-admin.yaml
+gcloud compute --project "prabha1-168411" ssh --zone "us-central1-f" "singlefs-1-vm"
+ls
+vi nfs-user.yaml
+vi nfs-admin.yaml
+vi nfs-pod.yaml
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+kubectl cluster-info
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "104.196.246.87"
+ssh 104.196.246.87
+gcloud compute --project "prabha1-168411" ssh --zone "us-central1-f" "singlefs-1-vm"
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+ls
+kubectl create -f nfs-admin.yaml -f nfs-user.yaml -f nfs-pod.yaml
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+kubectl get pods
+kubectl delete pod nginx
+kubectl get pods
+kubectl delete pods blue green red yellow
+kubectl get pods
+kubectl logs pods my-pod
+kubectl describe pods my-pod
+ls
+vi nfs-pod.yaml
+vi nfs-user.yaml
+vi nfs-admin.yaml
+kubectl describe pods my-pod
+kubectl get pods
+kubectl delete pods my-pod
+ld
+ls
+vi nfs-admin.yaml
+kubectl get PersistentVolumes
+kubectl create -f nfs-pod.yaml
+kubectl get pods
+kubectl describe pods my-pod
+kubectl get pvc
+kubectl get pv
+vi nfs-pod.yaml
+vi nfs-admin.yaml
+kubectl create -f nfs-user.yaml
+cp nfs-user.yaml
+cp nfs-user.yaml nfs-user1.yaml
+vi nfs-user1.yaml
+kubectl create -f nfs-user1.yaml
+kubectl describe pods my-pod
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+ls
+vi nfs-admin.yaml
+kubectl delete pv my-pv
+kubectl delete pvc my-pvc
+kubectl create -f nfs-admin.yaml
+kubectl create -f nfs-user.yaml
+kubectl create -f nfs-pod.yaml
+kubectl delete pod my-pod
+kubectl create -f nfs-pod.yaml
+kubectl delete pod my-pod
+kubectl get pods
+kubectl delete pod my-pod--grace-period=0
+kubectl delete pod my-pod --grace-period=0
+kubectl get pods
+kubectl create -f nfs-pod.yaml
+kubectl get pods
+kubectl describe pods my-pod
+ubectl get pvc
+kubectl delete pvc --all
+kubectl delete pv --all
+kubectl delete pod --all
+vi nfs-admin.yaml
+gcloud compute --project "prabha1-168411" ssh --zone "us-central1-f" "singlefs-2-vm"
+kubectl create -f nfs-admin.yaml
+kubectl create -f nfs-user.yaml
+kubectl create -f nfs-pod.yaml
+kubectl get pods
+kubectl describe pod my-pod
+cd /var/lib/kubelet/pods
+cd /var/lib/kubelet
+cd /var/lib
+ls
+cd /home/kubernetes/containerized_mounter/mounter
+cd /home/kubernetes/containerized_mounter
+cd /home/kubernetes
+kubectl describe service nfs-server
+cd ../..
+pwd
+cd home/
+ls
+cd prabha_techsub/
+ls
+cd mkdir
+mkdir nfs-ex
+cd nfs-ex/
+git clone https://github.com/kubernetes/kubernetes.git
+ls
+cd kubernetes/
+ls
+kubectl create -f examples/nfs/nfs-server-rc.yaml
+cd examples/
+ls
+cd ..
+cd examples/
+cd nfs
+cd ..
+ls
+cd kubernetes/
+ls
+cd examples/
+ls
+pwd
+ls
+mkdir nfs
+cd nfs
+vi nfs-server-rc.yaml
+vi nfs-server-service.yaml
+kubectl create -f nfs-server-rc.yaml
+kubectl create -f nfs-server-service.yaml
+kubectl describe services nfs-server
+vi nfs-pv.yaml
+vi nfs-pvc.yaml
+kubectl create -f nfs-pv.yaml
+vi nfs-busybox-rc.yaml
+kubectl create -f nfs-busybox-rc.yaml
+kubectl get pod -lname=nfs-busybox
+kubectl describe pod nfs-busybox
+kubectl get pod -lname=nfs-busybox
+vi nfs-busybox-rc.yaml
+kubectl create -f nfs-busybox-rc.yaml
+vi nfs-busybox-rc.yaml
+kubectl create -f nfs-busybox-rc.yaml
+kubectl get pod -lname=nfs-busybox
+kubectl delete pods --all
+kubectl create -f nfs-server-rc.yaml
+kubectl create -f nfs-server-service.yaml
+kubectl create -f nfs-pv.yaml
+kubectl create -f nfs-pvc.yaml
+kubectl describe services nfs-server
+kubectl describe pods nfs-server-
+kubectl describe pods nfs-server
+kubectl delete -f nfs-pvc.yaml
+kubectl delete -f nfs-pv.yaml
+ping 10.0.2.17
+vi nfs-pv.yaml
+kubectl create -f nfs-pv.yaml
+kubectl delete -f nfs-pvc.yaml
+kubectl create -f nfs-pvc.yaml
+kubectl create -f nfs-busybox-rc.yaml
+kubectl delete -f nfs-busybox-rc.yaml
+kubectl create -f nfs-busybox-rc.yaml
+kubectl get pod -lname=nfs-busybox
+kubectl exec nfs-busybox-jdhf3 -- cat /mnt/index.html
+kubectl exec nfs-busybox-kppb7 -- cat /mnt/index.html
+kubectl exec nfs-busybox-674wt -- cat /mnt/index.html
+kubectl exec nfs-busybox-kppb7 -- cat /mnt/index.html
+vi nfs-web-rc.yaml
+vi nfs-web-service.yaml
+kubectl create -f nfs-web-rc.yaml -f nfs-web-service.yaml
+kubectl exec nfs-busybox-674wt -- wget -qO- http://10.3.255.217
+exit
+ls
+cd nfs-ex/
+ls
+cd kubernetes/examples/
+cd nfs/
+ls
+kubectl describe services nfs-server
+ssh 10.0.2.17
+kubectl exec -it nfs-server /bin/bash
+kubectl exec -it nfs-server-service /bin/bash
+vi nfs-busybox-rc.yaml
+kubectl get services nfs-web
+ls
+vi nfs-web-service.yaml
+ls
+vi nfs-web-rc.yaml
+kubectl get pods
+kubectl describe pod nfs-web-0883r
+gcloud compute --project "prabha1-168411" ssh --zone "us-west1-a" "gke-pv-default-pool-86a236fb-dtdm"
+kubectl get pod -lname=nfs-busybox
+kubectl exec -it nfs-busybox-kppb7 /bin/bash
+kubectl exec -it nfs-busybox-kppb7 /sh
+kubectl exec -it nfs-busybox-kppb7 sh
+kubectl get pod
+kubectl exec -it nfs-server-8bqt0 sh
+kubectl exec -it nfs-busybox-kppb7 sh
+kubectl get pod
+kubectl exec -it nfs-web-0883r sh
+kubectl exec -it nfs-web-0883r /bin/bash
+exit
+kubectl --version
+kubectl version
+kubectl cluster-info
+ssh 104.196.246.87
+kubectl ssh 104.196.246.87
+cd .ssh
+ls
+ls -altr
+cd -
+ls
+git clone https://github.com/thesandlord/mongo-k8s-sidecar.git
+cd mongo-k8s-sidecar/
+ls
+cd example/
+ls
+cd StatefulSet/
+ls
+vi googlecloud_ssd.yaml
+kubectl create -f googlecloud_ssd.yaml
+vi mongo-statefulset.yaml
+kubectl create -f mongo-statefulset.yaml
+vi mongo-statefulset.yaml
+kubectl get pods
+kubectl get deployments
+kubectl get ReplicationController
+kubectl delete ReplicationController
+kubectl delete ReplicationController blue green red
+kubectl get pods
+kubectl; describe pods mongo-1
+kubectl; describe pod mongo-1
+kubectl describe pod mongo-1
+kubectl get pods
+kubectl describe pod mongo-2
+kubectl describe pod mongo-0
+kubectl delete pods --all
+kubectl apply -f mongo-statefulset.yaml
+kubectl get pods
+kubectl describe pod mongo-1
+kubectl delete pods --all
+kubectl delete rc --all
+kubectl delete pods --all
+ls
+kubectl get pods
+vi mongo-statefulset.yaml
+kubectl get pv
+kubectl get pvc
+vi mongo-statefulset.yaml
+kubectl get pvc
+kubectl delete pv my-pv
+kubectl delete pv my-pvc
+kubectl delete pvc my-pvc
+kubectl get pvc
+kubectl get pv
+kubectl delete pv nfs
+kubectl get pv
+kubectl delete pv pvc-346888aa-46c4-11e7-a477-42010a8a0178
+kubectl get pv
+kubectl get pvc
+kubectl get pv
+kubectl delete pvc --all
+kubectl apply -f googlecloud_ssd.yaml
+kubectl get pv
+kubectl get pvc
+kubectl delete -f mongo-statefulset.yaml
+kubectl get pvc
+kubectl delete pvc --all
+kubectl get pvc
+kubectl get pv
+kubectl apply -f mongo-statefulset.yaml
+kubectl get pv
+kubectl get pvc
+exit
+ls
+cd mongo-k8s-sidecar/
+ls
+cd example/
+ls
+cd StatefulSet/
+ls
+gcloud container clusters create "test-cluster"
+gcloud compute/zone list
+gcloud compute zone list
+gcloud compute zones list
+gcloud config set compute/zone us-east1-c
+gcloud container clusters create "test-cluster"
+gcloud container clusters get-credentials test-cluster
+cd /mongo-k8s-sidecar/example/StatefulSet/
+kubectl apply -f googlecloud_ssd.yaml
+kubectl apply -f mongo-statefulset.yaml
+kubectl get pv
+kubectl get pvc
+kubectl get pv
+kubectl get pvc
+kubectl get pv
+kubectl get pods
+kubectl get pv
+vi test.yaml
+kubectl apply -f test.yaml
+kubectl get pv
+kubectl get pvc
+ls
+vi googlecloud_ssd.yaml
+kubectl delete -f test.yaml
+vi test.yaml
+kubectl apply -f test.yaml
+kubectl get pvc
+kubectl get pv
+kubectl get storageclass
+kubectl get pv
+kubectl delete -f mongo-statefulset.yaml
+kubectl get pv
+kubectl get pvc
+kubectl delete pv --all
+kubectl delete pvc --all
+kubectl delete -f mongo-statefulset.yaml
+gcloud config set compute/zone us-east1-c
+gcloud container clusters create "pv"
+kubectl apply -f googlecloud_ssd.yaml
+ls
+kubectl apply -f mongo-statefulset.yaml
+kubectl get pv
+kubectl get pvc
+kubectl get pv
+kubectl get pods
+kubectl delete -f googlecloud_ssd.yaml
+kubectl delete -f mongo-statefulset.yaml
+kubectl get pv
+kubectl get pvc
+kubectl delete pvc --all
+kubectl get pvc
+kubectl get pv
+kubectl get pods
+vi googlecloud_ssd.yaml
+vi mongo-statefulset.yaml
+kubectl apply -f googlecloud_ssd.yaml
+kubectl apply -f mongo-statefulset.yaml
+kubectl get pv
+kubectl get pvc
+kubectl delete -f mongo-statefulset.yaml
+kubectl delete -f googlecloud_ssd.yaml
+vi mongo-statefulset.yaml
+kubectl get pv
+kubectl get pvc
+kubectl get pods
+kubectl delete pvc --all
+kubectl get pods
+clear
+ls
+
+                                                     
