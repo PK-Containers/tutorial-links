@@ -570,3 +570,225 @@
         HQSML-151665:~ pkrish00c$ kubectl proxy
         Starting to serve on 127.0.0.1:8001
         ^C
+
+
+## Validating mysql pods
+
+
+        HQSML-151665:cluster pkrish00c$ cd wp-statefulset/
+        HQSML-151665:wp-statefulset pkrish00c$ ls
+        README.md	mysql.yml	nfs-node.sh	wordpress.yml
+        etcd.yml	nfs-master.sh	volumes.yml
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl create -f volumes.yml
+        persistentvolume "mysql-pv0" created
+        persistentvolumeclaim "db-mysql-0" created
+        persistentvolume "mysql-pv1" created
+        persistentvolumeclaim "db-mysql-1" created
+        persistentvolume "mysql-pv2" created
+        persistentvolumeclaim "db-mysql-2" created
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl get pv
+        NAME        CAPACITY   ACCESSMODES   RECLAIMPOLICY   STATUS    CLAIM                REASON    AGE
+        mysql-pv0   1Gi        RWX           Recycle         Bound     default/db-mysql-0             7s
+        mysql-pv1   1Gi        RWX           Recycle         Bound     default/db-mysql-1             7s
+        mysql-pv2   1Gi        RWX           Recycle         Bound     default/db-mysql-2             7s
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl get pvc
+        NAME                               STATUS    VOLUME      CAPACITY   ACCESSMODES   AGE
+        db-mysql-0                         Bound     mysql-pv0   1Gi        RWX           10s
+        db-mysql-1                         Bound     mysql-pv1   1Gi        RWX           10s
+        db-mysql-2                         Bound     mysql-pv2   1Gi        RWX           10s
+        mongo-persistent-storage-mongo-0   Pending                                        10m
+        mongo-persistent-storage-mongo-1   Pending                                        10m
+        mongo-persistent-storage-mongo-2   Pending                                        10m
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl delete pvc mongo-persistent-storage-mongo-0
+        persistentvolumeclaim "mongo-persistent-storage-mongo-0" deleted
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl delete pvc mongo-persistent-storage-mongo-1
+        persistentvolumeclaim "mongo-persistent-storage-mongo-1" deleted
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl delete pvc mongo-persistent-storage-mongo-2
+        persistentvolumeclaim "mongo-persistent-storage-mongo-2" deleted
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl get pvc
+        NAME         STATUS    VOLUME      CAPACITY   ACCESSMODES   AGE
+        db-mysql-0   Bound     mysql-pv0   1Gi        RWX           46s
+        db-mysql-1   Bound     mysql-pv1   1Gi        RWX           46s
+        db-mysql-2   Bound     mysql-pv2   1Gi        RWX           46s
+        HQSML-151665:wp-statefulset pkrish00c$ ls
+        README.md	mysql.yml	nfs-node.sh	wordpress.yml
+        etcd.yml	nfs-master.sh	volumes.yml
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl create -f etcd.yml
+        service "etcd" created
+        service "etcd-client" created
+        pod "etcd-0" created
+        service "etcd-0" created
+        pod "etcd-1" created
+        service "etcd-1" created
+        pod "etcd-2" created
+        service "etcd-2" created
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl get pods
+        NAME      READY     STATUS    RESTARTS   AGE
+        etcd-0    0/1       Pending   0          17s
+        etcd-1    0/1       Pending   0          17s
+        etcd-2    0/1       Pending   0          17s
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl get svc
+        NAME          CLUSTER-IP       EXTERNAL-IP   PORT(S)                               AGE
+        etcd          10.247.187.210   <none>        2379/TCP,4001/TCP,7001/TCP            48s
+        etcd-0        10.247.156.172   <none>        2379/TCP,2380/TCP,4001/TCP,7001/TCP   48s
+        etcd-1        10.247.200.128   <none>        2379/TCP,2380/TCP,4001/TCP,7001/TCP   48s
+        etcd-2        10.247.227.139   <none>        2379/TCP,2380/TCP,4001/TCP,7001/TCP   48s
+        etcd-client   10.247.103.11    <nodes>       2379:30919/TCP                        48s
+        kubernetes    10.247.0.1       <none>        443/TCP                               4h
+        HQSML-151665:wp-statefulset pkrish00c$ kubectl describe pod etcd-0
+        Name:		etcd-0
+        Namespace:	default
+        Node:		/
+        Labels:		app=etcd
+                        etcd_node=etcd-0
+        Status:		Pending
+        IP:
+        Controllers:	<none>
+        Containers:
+          etcd-0:
+            Image:	quay.io/coreos/etcd:latest
+            Ports:	2379/TCP, 2380/TCP, 4001/TCP, 7001/TCP
+            Command:
+              /usr/local/bin/etcd
+              --name
+              etcd-0
+              --initial-advertise-peer-urls
+              http://etcd-0:2380
+              --listen-peer-urls
+              http://0.0.0.0:2380
+              --listen-client-urls
+              http://0.0.0.0:2379
+              --advertise-client-urls
+              http://etcd-0:2379
+              --initial-cluster
+              etcd-0=http://etcd-0:2380,etcd-1=http://etcd-1:2380,etcd-2=http://etcd-2:2380
+              --initial-cluster-state
+              new
+            Requests:
+              cpu:	100m
+            Volume Mounts:
+              /var/run/secrets/kubernetes.io/serviceaccount from default-token-rsg6b (ro)
+            Environment Variables:	<none>
+        Conditions:
+          Type		Status
+          PodScheduled 	False
+        Volumes:
+          default-token-rsg6b:
+            Type:	Secret (a volume populated by a Secret)
+            SecretName:	default-token-rsg6b
+        QoS Class:	Burstable
+        Tolerations:	<none>
+        Events:
+          FirstSeen	LastSeen	Count	From			SubObjectPath	Type		Reason	   		Message
+          ---------	--------	-----	----			-------------	--------	------	   		-------
+          1m		20s		8	{default-scheduler }			Warning		FailedScheduling	pod (etcd-0) failed to fit in any node
+        fit failure summary on nodes : MatchNodeSelector (3)
+
+        ### For this error, we should resolve node name in node labels
+
+
+
+        HQSML-151665:cluster pkrish00c$ kubectl get svc
+        NAME           CLUSTER-IP       EXTERNAL-IP   PORT(S)                               AGE
+        etcd           10.247.26.173    <none>        2379/TCP,4001/TCP,7001/TCP            1h
+        etcd-0         10.247.215.142   <none>        2379/TCP,2380/TCP,4001/TCP,7001/TCP   1h
+        etcd-1         10.247.170.223   <none>        2379/TCP,2380/TCP,4001/TCP,7001/TCP   1h
+        etcd-2         10.247.109.43    <none>        2379/TCP,2380/TCP,4001/TCP,7001/TCP   1h
+        etcd-client    10.247.37.179    <nodes>       2379:31754/TCP                        1h
+        kubernetes     10.247.0.1       <none>        443/TCP                               6h
+        mysql          None             <none>        3306/TCP                              41m
+        mysql-client   10.247.61.157    <nodes>       3306:32707/TCP                        41m
+
+
+        HQSML-151665:cluster pkrish00c$ kubectl describe svc mysql-client|grep Endpoints
+        Endpoints:		10.246.3.3:3306,10.246.61.7:3306,10.246.85.3:3306
+
+        HQSML-151665:cluster pkrish00c$ kubectl delete pod mysql-2
+        pod "mysql-2" deleted
+        HQSML-151665:cluster pkrish00c$ kubectl get pods -w
+        NAME      READY     STATUS    RESTARTS   AGE
+        etcd-0    1/1       Running   0          1h
+        etcd-1    1/1       Running   0          1h
+        etcd-2    1/1       Running   0          1h
+        mysql-0   1/1       Running   0          49m
+        mysql-1   1/1       Running   0          41m
+        mysql-2   1/1       Running   0          4s
+        NAME      READY     STATUS    RESTARTS   AGE
+        mysql-2   0/1       Error     0          56s
+        mysql-2   1/1       Running   1         57s
+        ^CHQSML-151665:cluster pkrish00c$ kubectl delete pod mysql-1
+        pod "mysql-1" deleted
+        HQSML-151665:cluster pkrish00c$ kubectl get pods -w
+        NAME      READY     STATUS        RESTARTS   AGE
+        etcd-0    1/1       Running       0          1h
+        etcd-1    1/1       Running       0          1h
+        etcd-2    1/1       Running       0          1h
+        mysql-0   1/1       Running       0          51m
+        mysql-1   1/1       Terminating   0          43m
+        mysql-2   1/1       Running       1          1m
+        NAME      READY     STATUS        RESTARTS   AGE
+        mysql-1   0/1       Terminating   0          43m
+        mysql-1   0/1       Terminating   0         43m
+        mysql-1   0/1       Terminating   0         43m
+        mysql-1   0/1       Pending   0         0s
+        mysql-1   0/1       Pending   0         0s
+        mysql-1   0/1       ContainerCreating   0         0s
+        mysql-1   1/1       Running   0         2s
+        mysql-2   0/1       Error     1         1m
+        mysql-2   0/1       CrashLoopBackOff   1         2m
+        mysql-2   1/1       Running   2         2m
+        ^CHQSML-151665:cluster pkrish00c$ kubectl get pods
+        NAME      READY     STATUS    RESTARTS   AGE
+        etcd-0    1/1       Running   0          1h
+        etcd-1    1/1       Running   0          1h
+        etcd-2    1/1       Running   0          1h
+        mysql-0   1/1       Running   0          52m
+        mysql-1   1/1       Running   0          51s
+        mysql-2   1/1       Running   2          2m
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
